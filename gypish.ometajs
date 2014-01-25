@@ -1,6 +1,8 @@
 var JSONIC = require('jsonic-ometajs');
 ometa gypish <: JSONIC {
-    string = "\"" <(~'"' character)*>:s "\"" -> s |
+    string = stringpart:s string*:t -> s.concat(t),
+
+    stringpart = "\"" <(~'"' character)*>:s "\"" -> s |
         "'" <(~'\'' character)*>:s "'" -> s,
 
     object = "{" pair:l ( "," pair:p { p } )*:r ","* "}" -> [l].concat(r).reduce(function (acc, e) {
