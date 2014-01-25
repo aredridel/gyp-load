@@ -1,7 +1,7 @@
 var merge = require('gyp-merge');
 var path = require('path');
 var fs = require('fs');
-var JSONIC = require('jsonic-ometajs');
+var gypish = require('./gypish');
 
 var gyp = module.exports = function gyp(arg, relative) {
     arg = loadFile(arg); /// @todo replace with a parser that supports comments.
@@ -47,6 +47,6 @@ var gyp = module.exports = function gyp(arg, relative) {
     }
 
     function loadFile(filename) {
-        return JSONIC.parse(fs.readFileSync(relative ? path.resolve(relative, filename) : filename, {encoding: 'utf-8'}));
+        return gypish.parse(fs.readFileSync(relative ? path.resolve(relative, filename) : filename, {encoding: 'utf-8'}));
     }
 };

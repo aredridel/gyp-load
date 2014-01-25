@@ -1,0 +1,11 @@
+var JSONIC = require('jsonic-ometajs');
+ometa gypish <: JSONIC {
+    string = "\"" <(~'"' character)*>:s "\"" -> s |
+        "'" <(~'\'' character)*>:s "'" -> s,
+}
+
+gypish.parse = function(input) {
+    return this.matchAll(input, 'root');
+};
+
+module.exports = gypish;

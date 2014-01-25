@@ -4,6 +4,7 @@
   "description": "Load GYP files, handling include processing",
   "main": "index.js",
   "scripts": {
+    "prepublish": "ometajs2js -i gypish.ometajs -o gypish.js",
     "test": "tap test"
   },
   "repository": "http://github.com/aredridel/gyp-load.git",
@@ -11,9 +12,10 @@
   "license": "BSD",
   "dependencies": {
     "gyp-merge": "~0.2.0",
-    "jsonic-ometajs": "~0.0.0"
+    "jsonic-ometajs": "~0.1.0"
   },
   "devDependencies": {
-    "tap": "~0.4.2"
+    "tap": "~0.4.2",
+    "ometajs": "~3.3.5"
   }
 }
