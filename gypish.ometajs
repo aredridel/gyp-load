@@ -1,0 +1,22 @@
+var JSONIC = require('jsonic-ometajs');
+ometa gypish <: JSONIC {
+    string = stringpart:s string*:t -> s.concat(t),
+
+    stringpart = "\"" <(~'"' character)*>:s "\"" -> s |
+        "'" <(~'\'' character)*>:s "'" -> s,
+
+    object = "{" pair:l ( "," pair:p { p } )*:r ","* "}" -> [l].concat(r).reduce(function (acc, e) {
+                if (e) acc[e[0]] = e[1];
+                return acc;
+            }, {})
+        | "{" "}" -> {},
+
+    array = "[" value:l (",", value)*:r ","* "]" -> { r ? [l].concat(r) : [l] }
+        | "[" "]" -> [],
+}
+
+gypish.parse = function(input) {
+    return this.matchAll(input, 'root');
+};
+
+module.exports = gypish;

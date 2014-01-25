@@ -31,3 +31,14 @@ test("merge while including", function (t) {
     t.equal(out.included, 1, 'included should be 1');
     t.end();
 });
+
+test("node.gyp", function (t) {
+    try {
+        var out = gyp('node.gyp', __dirname);
+        console.log(out);
+        t.equal(out.variables.library_files.slice(-1)[0], 'lib/zlib.js', "Last element in a comma-trailing array is parsed correctly");
+    } catch (e) {
+        t.fail(e);
+    }
+    t.end();
+});
