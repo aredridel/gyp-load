@@ -15,7 +15,7 @@
     "jsonic-ometajs": "~0.1.0"
   },
   "devDependencies": {
-    "ometajs": "~3.3.5",
+    "ometajs": "^4.0.0",
     "tap": "^2.2.0"
   }
 }
