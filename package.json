@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "ometajs": "^4.0.0",
-    "tap": "^2.2.0"
+    "tap": "^7.0.0"
   },
   "bugs": {
     "url": "https://github.com/aredridel/gyp-load/issues"
